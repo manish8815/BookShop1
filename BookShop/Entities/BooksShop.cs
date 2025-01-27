@@ -1,10 +1,10 @@
 ﻿namespace BookShop.Entities
 {
-    public class BookCategory
+    public class BooksShop
     {
         public int BookId { get; set; }
-        public int CategoryId { get; set; }
+        public int ShopId { get; set; }
         public Book Book { get; set; }
-        public Category Category { get; set; }
+        public Shop Shop { get; set; }
     }
 }
