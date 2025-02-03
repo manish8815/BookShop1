@@ -1,4 +1,5 @@
 using BookShop.Data;
+using BookShop.Mappers;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,14 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 
 builder.Services.AddIdentity<IdentityUser,IdentityRole>().
     AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
+
+var config = new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new BookshopMapper());
+});
+var mapper = config.CreateMapper();
+builder.Services.AddSingleton(mapper);
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).
     AddJwtBearer(options =>
