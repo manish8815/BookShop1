@@ -9,6 +9,7 @@ namespace BookShop.Mappers
         public BookshopMapper()
         {
             CreateMap<Category, CategoryDTO>();
+            CreateMap<CategoryCreationDTO, Category>();
         }
     }
 }
